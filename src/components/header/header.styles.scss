@@ -4,12 +4,19 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
+    border-bottom: 1px solid grey;
   
     .logo-container {
       height: 100%;
-      width: 70px;
-      padding: 25px;
+      width: 600px;
+      .logo {
+        white-space: nowrap;
+        justify-content: flex-start;
+        font-family: 'League Gothic', sans-serif;
+        letter-spacing: 4px;
+      }
     }
+
   
     .options {
       width: 50%;
