@@ -1,20 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment } from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { ReactComponent as Logo} from '../../assets/crown.svg';
 import { auth } from '../../firebase/firebase.utils';
-import CartIcon from '../cart-icon/cart-icon';
-import CartDropdown from '../cart-dropdown/cart-dropdown';
+import CartIcon from '../../components/cart-icon/cart-icon';
+import CartDropdown from '../../components/cart-dropdown/cart-dropdown';
 import { selectCartHidden } from '../../redux/cart/cart.selectors'
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 
-import './header.styles.scss';
+import './navigation.styles.scss';
 
-const Header = ({ currentUser, hidden }) => (
-    <div className='header'>
+const Navigation = ({ currentUser, hidden }) => (
+    <>
+    <div className='navigation'>
         <Link className='logo-container' to='/'>
             <h1 className='logo' >SUBURBAN OUTFITTERS</h1>
         </Link>
@@ -39,6 +39,8 @@ const Header = ({ currentUser, hidden }) => (
         </div>
         {hidden ?  null : <CartDropdown/> }
     </div>
+        <Outlet />
+    </>
 );
 
 const mapStateToProps = createStructuredSelector({
@@ -46,4 +48,4 @@ const mapStateToProps = createStructuredSelector({
    hidden: selectCartHidden
 })
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(Navigation);
