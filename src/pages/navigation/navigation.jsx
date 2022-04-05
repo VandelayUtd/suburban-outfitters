@@ -30,7 +30,7 @@ const Navigation = ({ currentUser, hidden }) => (
                     SIGN OUT
                 </div>
                 ) : (
-                    <Link className='option' to='/signin'>
+                    <Link className='option' to='/auth'>
                         SIGN IN
                     </Link>
                 )

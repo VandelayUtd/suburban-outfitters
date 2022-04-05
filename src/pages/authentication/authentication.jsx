@@ -2,13 +2,13 @@ import React from 'react';
 import SignIn from '../../components/sign-in/sign-in';
 import SignUp from '../../components/sign-up/sign-up';
 
-import './sign-in-up.scss'
+import './authentication.scss'
 
-const SignInUp = () => (
-    <div className='sign-in-sign-up'>
+const Authentication = () => (
+    <div className='authentication'>
         <SignIn />
-        <SignUp />
+        {/* <SignUp /> */}
     </div>
 )
 
-export default SignInUp
+export default Authentication
