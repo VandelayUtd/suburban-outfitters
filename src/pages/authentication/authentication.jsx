@@ -7,7 +7,7 @@ import './authentication.scss'
 const Authentication = () => (
     <div className='authentication'>
         <SignIn />
-        {/* <SignUp /> */}
+        <SignUp />
     </div>
 )
 
