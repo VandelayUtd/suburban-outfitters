@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { auth } from '../../firebase/firebase.utils';
+import { UserContext } from '../../contexts/user.context'
+import { auth, signOutUser } from '../../firebase/firebase.utils';
 import CartIcon from '../../components/cart-icon/cart-icon';
 import CartDropdown from '../../components/cart-dropdown/cart-dropdown';
 import { selectCartHidden } from '../../redux/cart/cart.selectors'
@@ -12,36 +13,44 @@ import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import './navigation.styles.scss';
 
-const Navigation = ({ currentUser, hidden }) => (
-    <>
-    <div className='navigation'>
-        <Link className='logo-container' to='/'>
-            <h1 className='logo' >SUBURBAN OUTFITTERS</h1>
-        </Link>
-        <div className='options'>
-            <Link className='option' to='/shop'>
-                SHOP
+const Navigation = () => {
+    const { currentUser, setCurrentUser } = useContext(UserContext);
+
+    const signOutHandler = async () => {
+        await signOutUser(); 
+        setCurrentUser(null);
+    }
+
+    return (
+        <>
+        <div className='navigation'>
+            <Link className='logo-container' to='/'>
+                <h1 className='logo' >SUBURBAN OUTFITTERS</h1>
             </Link>
-            <Link className='option' to='/shop'>
-                CONTACT
-            </Link>
-            {currentUser ? (
-                <div className='option' onClick={()=> auth.signOut()}>
-                    SIGN OUT
-                </div>
-                ) : (
-                    <Link className='option' to='/auth'>
-                        SIGN IN
-                    </Link>
-                )
-            }
-            <CartIcon />
+            <div className='options'>
+                <Link className='option' to='/shop'>
+                    SHOP
+                </Link>
+                <Link className='option' to='/shop'>
+                    CONTACT
+                </Link>
+                {
+                    currentUser ? (
+                        <span onClick={signOutHandler} className='option' >SIGN OUT</span>
+                    ) : (
+                        <Link className='option' to='/auth'>
+                            SIGN IN
+                        </Link>
+                    )
+                }
+
+                <CartIcon />
+            </div>
         </div>
-        {hidden ?  null : <CartDropdown/> }
-    </div>
-        <Outlet />
-    </>
-);
+            <Outlet />
+        </>
+    );
+};
 
 const mapStateToProps = createStructuredSelector({
    currentUser: selectCurrentUser,
