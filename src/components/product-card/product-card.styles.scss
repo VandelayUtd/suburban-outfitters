@@ -1,41 +1,38 @@
-.collection-item {
-    width: 22vw;
-    padding: 4px;
+.product-card-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     height: 350px;
     align-items: center;
     position: relative;
   
-    .image {
+    img {
       width: 100%;
       height: 95%;
-      background-size: cover;
-      background-position: center;
+      object-fit: cover;
       margin-bottom: 5px;
     }
-
-    .custom-button { 
-      width: 80%; 
+  
+    button {
+      width: 80%;
       opacity: 0.7;
       position: absolute;
       top: 255px;
       display: none;
     }
-
-    &:hover { 
-      .image { 
+  
+    &:hover {
+      img {
         opacity: 0.8;
       }
-
-      .custom-button { 
+  
+      button {
         opacity: 0.85;
-        display: flex;  
+        display: flex;
       }
-
     }
   
-    .collection-footer {
+    .footer {
       width: 100%;
       height: 5%;
       display: flex;

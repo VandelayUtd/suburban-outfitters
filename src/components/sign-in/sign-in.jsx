@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './sign-in.styles.scss';
 
 import FormInput from '../form-input/form-input';
-import CustomButton from '../custom-button/custom-button';
+import Button from '../button/button';
 
 import {
     signInWithGooglePopup, 
@@ -84,8 +84,8 @@ const SignIn = () =>  {
                     required
                 />
                 <div className='buttons'>
-                    <CustomButton type='submit'>Sign In</CustomButton>
-                    <CustomButton type='button' buttonType='google' onClick={logGoogleUser}>Sign In with Google</CustomButton>
+                    <Button type='submit'>Sign In</Button>
+                    <Button type='button' buttonType='google' onClick={logGoogleUser}>Sign In with Google</Button>
                 </div>
             </form>
         </div>

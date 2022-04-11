@@ -1,19 +1,20 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useContext } from 'react';
 
-import CollectionsOverview from '../../components/collections-overview/collections-overview'
-import CollectionPage from '../collection/collection';
+import ProductCard from '../../components/product-card/product-cart';
+import { ProductsContext } from '../../contexts/products.context';
 
-const ShopPage = ({ match }) => {
+import './shop.styles.scss'
+
+const Shop = () => {
+
+    const { products } = useContext(ProductsContext)
   
     return (  
-    <div className='shop-page' >
-    <Routes>
-        <Route index element={<CollectionsOverview/>} />
-        <Route path=':collection' element={<CollectionPage/>}/>
-    </Routes>
+    <div className='products-container' >
+        {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+      ))}
     </div>
 )}
 
-
-export default ShopPage
+export default Shop;
