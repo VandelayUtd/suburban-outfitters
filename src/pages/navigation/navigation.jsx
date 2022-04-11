@@ -1,17 +1,24 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
 import { UserContext } from '../../contexts/user.context'
+import { CartContext } from '../../contexts/cart.context';
+
 import { signOutUser } from '../../firebase/firebase.utils';
 
-import ShoppingIcon from '../../components/cart-icon/cart-icon'
+import CartIcon from '../../components/cart-icon/cart-icon'
+import CartDropdown from '../../components/cart-dropdown/cart-dropdown'
 
 import './navigation.styles.scss';
 
 const Navigation = () => {
-    const { currentUser, setCurrentUser } = useContext(UserContext);
+    const { currentUser } = useContext(UserContext);
 
+    const { isCartOpen } = useContext(CartContext);
 
+    const handleToggle = () => {
+        console.log('hit')
+    }
 
     return (
         <>
@@ -32,8 +39,9 @@ const Navigation = () => {
                             </Link>
                         )
                     }
-                    <ShoppingIcon />
+                    <CartIcon />
                 </div>
+                {isCartOpen && <CartDropdown />}
             </div>
             <Outlet />
         </>
