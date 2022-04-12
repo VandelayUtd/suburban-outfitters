@@ -33,7 +33,6 @@ const CheckoutPage = () => {
             </div>
             {
                 cartItems.map(cartItem => (
-                    cartItem.quantity > 0 &&
                     <CheckoutItem key={cartItem.id} cartItem={cartItem} />
                 ))
             }
