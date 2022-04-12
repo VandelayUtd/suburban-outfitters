@@ -10,7 +10,7 @@ import './checkout.styles.scss';
 
 const CheckoutPage = () => {
     
-    const { cartItems } = useContext(CartContext)
+    const { cartItems, cartTotal } = useContext(CartContext)
 
     return (
         <div className='checkout-page'>
@@ -33,11 +33,12 @@ const CheckoutPage = () => {
             </div>
             {
                 cartItems.map(cartItem => (
+                    cartItem.quantity > 0 &&
                     <CheckoutItem key={cartItem.id} cartItem={cartItem} />
                 ))
             }
             <div className='total'>
-                <span>TOTAL: </span>
+                <span>TOTAL: ${cartTotal}</span>
             </div>
             <div className='test-warning'>
                 *Please use the following test credit card for payments*
