@@ -9,7 +9,7 @@ import { signOutUser } from '../../firebase/firebase.utils';
 import CartIcon from '../../components/cart-icon/cart-icon'
 import CartDropdown from '../../components/cart-dropdown/cart-dropdown'
 
-import './navigation.styles.scss';
+import {NavigationContainer, NavLinks, NavLink, LogoContainer, Logo} from './navigation.styles';
 
 const Navigation = () => {
     const { currentUser } = useContext(UserContext);
@@ -22,27 +22,27 @@ const Navigation = () => {
 
     return (
         <>
-            <div className='navigation'>
-                <Link className='logo-container' to='/'>
-                    <h1 className='logo' >SUBURBAN OUTFITTERS</h1>
-                </Link>
-                <div className='options'>
-                    <Link className='option' to='/shop'>
+            <NavigationContainer>
+                <LogoContainer to='/'>
+                    <Logo>SUBURBAN OUTFITTERS</Logo>
+                </LogoContainer>
+                <NavLinks >
+                    <NavLink to='/shop'>
                         SHOP
-                    </Link>
+                    </NavLink>
                     {
                         currentUser ? (
-                            <span onClick={signOutUser} className='option' >SIGN OUT</span>
+                            <NavLink as='span' onClick={signOutUser} className='option' >SIGN OUT</NavLink>
                         ) : (
-                            <Link className='option' to='/auth'>
+                            <NavLink to='/auth'>
                                 SIGN IN
-                            </Link>
+                            </NavLink>
                         )
                     }
                     <CartIcon />
-                </div>
+                </NavLinks>
                 {isCartOpen && <CartDropdown />}
-            </div>
+            </NavigationContainer>
             <Outlet />
         </>
     );
