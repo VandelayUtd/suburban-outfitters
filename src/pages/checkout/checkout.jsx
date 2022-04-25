@@ -50,7 +50,7 @@ const CheckoutPage = () => {
                 <br/>
                 4242-4242-4242-4242 03/20 123
             </TestWarning>
-            <StripeCheckoutButton price={10}/>
+            <StripeCheckoutButton price={cartTotal}/>
         </CheckoutContainer>
     );
 };
