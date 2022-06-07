@@ -8,23 +8,24 @@ export const NavigationContainer = styled.div`
   justify-content: space-between;
   margin-bottom: 25px;
   border-bottom: 1px solid grey;
+
+  @media screen and (max-width: 800px) {
+    
+    padding: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    border-bottom: none;
+  }
 `
 
 export const LogoContainer = styled(Link)`
   height: 100%;
-  width: 35%;
-`
-export const NavLinks = styled.div`
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-`
+  
 
-export const NavLink = styled(Link)`
-  padding: 10px 15px;
-  cursor: pointer;
+  @media screen and (max-width: 800px) {
+    margin-top: -16px;
+    padding: 4px;
+  }
 `
 
 export const Logo = styled.h1`
@@ -32,5 +33,23 @@ export const Logo = styled.h1`
   justify-content: flex-start;
   font-family: 'League Gothic', sans-serif;
   letter-spacing: 4px;
-  color: black
+  color: black;
+  padding: 0px;
+`
+
+export const NavLinks = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  @media screen and (max-width: 800px) {
+    margin-top: 4px;
+  }
+`
+
+export const NavLink = styled(Link)`
+  padding: 10px 15px;
+  cursor: pointer;
 `
